@@ -6,7 +6,7 @@ import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
 
 class ProductDetailPage extends StatefulWidget {
-  ProductDetailPage({Key key}) : super(key: key);
+  ProductDetailPage({required Key key}) : super(key: key);
 
   @override
   _ProductDetailPageState createState() => _ProductDetailPageState();
@@ -14,8 +14,8 @@ class ProductDetailPage extends StatefulWidget {
 
 class _ProductDetailPageState extends State<ProductDetailPage>
     with TickerProviderStateMixin {
-  AnimationController controller;
-  Animation<double> animation;
+  late AnimationController controller;
+  late Animation<double> animation;
   @override
   void initState() {
     super.initState();
@@ -69,7 +69,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
     double size = 20,
     double padding = 10,
     bool isOutLine = false,
-    Function onPressed,
+    required Function onPressed,
   }) {
     return Container(
       height: 40,
@@ -82,7 +82,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
             style: isOutLine ? BorderStyle.solid : BorderStyle.none),
         borderRadius: BorderRadius.all(Radius.circular(13)),
         color:
-            isOutLine ? Colors.transparent : Theme.of(context).backgroundColor,
+            isOutLine ? Colors.transparent : Theme.of(context).colorScheme.surface,
         boxShadow: <BoxShadow>[
           BoxShadow(
               color: Color(0xfff8f8f8),
@@ -115,7 +115,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
           TitleText(
             text: "AIP",
             fontSize: 160,
-            color: LightColor.lightGrey,
+            color: LightColor.lightGrey, key: UniqueKey(),
           ),
           Image.asset('assets/show_1.png')
         ],
@@ -200,7 +200,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      TitleText(text: "NIKE AIR MAX 200", fontSize: 25),
+                      TitleText(text: "NIKE AIR MAX 200", fontSize: 25, key: UniqueKey(),),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
@@ -210,11 +210,11 @@ class _ProductDetailPageState extends State<ProductDetailPage>
                               TitleText(
                                 text: "\$ ",
                                 fontSize: 18,
-                                color: LightColor.red,
+                                color: LightColor.red, key: UniqueKey(),
                               ),
                               TitleText(
                                 text: "240",
-                                fontSize: 25,
+                                fontSize: 25, key: UniqueKey(),
                               ),
                             ],
                           ),
@@ -262,7 +262,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
       children: <Widget>[
         TitleText(
           text: "Available Size",
-          fontSize: 14,
+          fontSize: 14, key: UniqueKey(),
         ),
         SizedBox(height: 20),
         Row(
@@ -287,12 +287,12 @@ class _ProductDetailPageState extends State<ProductDetailPage>
             style: !isSelected ? BorderStyle.solid : BorderStyle.none),
         borderRadius: BorderRadius.all(Radius.circular(13)),
         color:
-            isSelected ? LightColor.orange : Theme.of(context).backgroundColor,
+            isSelected ? LightColor.orange : Theme.of(context).colorScheme.surface,
       ),
       child: TitleText(
         text: text,
         fontSize: 16,
-        color: isSelected ? LightColor.background : LightColor.titleTextColor,
+        color: isSelected ? LightColor.background : LightColor.titleTextColor, key: UniqueKey(),
       ),
     ).ripple(() {}, borderRadius: BorderRadius.all(Radius.circular(13)));
   }
@@ -303,7 +303,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
       children: <Widget>[
         TitleText(
           text: "Available Size",
-          fontSize: 14,
+          fontSize: 14, key: UniqueKey(),
         ),
         SizedBox(height: 20),
         Row(
@@ -352,7 +352,7 @@ class _ProductDetailPageState extends State<ProductDetailPage>
       children: <Widget>[
         TitleText(
           text: "Available Size",
-          fontSize: 14,
+          fontSize: 14, key: UniqueKey(),
         ),
         SizedBox(height: 20),
         Text(AppData.description),

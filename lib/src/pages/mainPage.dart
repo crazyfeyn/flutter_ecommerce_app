@@ -8,7 +8,7 @@ import 'package:flutter_ecommerce_app/src/widgets/title_text.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({Key key, this.title}) : super(key: key);
+  MainPage({required Key key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -32,7 +32,7 @@ class _MainPageState extends State<MainPage> {
             borderRadius: BorderRadius.all(Radius.circular(13)),
             child: Container(
               decoration: BoxDecoration(
-                color: Theme.of(context).backgroundColor,
+                color: Theme.of(context).colorScheme.surface,
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                       color: Color(0xfff8f8f8),
@@ -53,7 +53,7 @@ class _MainPageState extends State<MainPage> {
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(13)),
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).colorScheme.surface,
           boxShadow: AppTheme.shadow),
       child: Icon(
         icon,
@@ -74,12 +74,12 @@ class _MainPageState extends State<MainPage> {
                 TitleText(
                   text: isHomePageSelected ? 'Our' : 'Shopping',
                   fontSize: 27,
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w400, key: UniqueKey(),
                 ),
                 TitleText(
                   text: isHomePageSelected ? 'Products' : 'Cart',
                   fontSize: 27,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w700, key: UniqueKey(),
                 ),
               ],
             ),
@@ -140,10 +140,10 @@ class _MainPageState extends State<MainPage> {
                         switchInCurve: Curves.easeInToLinear,
                         switchOutCurve: Curves.easeOutBack,
                         child: isHomePageSelected
-                            ? MyHomePage()
+                            ? MyHomePage(key: UniqueKey(), title: '',)
                             : Align(
                                 alignment: Alignment.topCenter,
-                                child: ShoppingCartPage(),
+                                child: ShoppingCartPage(key: UniqueKey(),),
                               ),
                       ),
                     )
@@ -155,7 +155,7 @@ class _MainPageState extends State<MainPage> {
               bottom: 0,
               right: 0,
               child: CustomBottomNavigationBar(
-                onIconPresedCallback: onBottomIconPressed,
+                onIconPresedCallback: onBottomIconPressed, key: UniqueKey(),
               ),
             )
           ],

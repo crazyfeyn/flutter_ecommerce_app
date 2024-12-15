@@ -8,7 +8,7 @@ import 'package:flutter_ecommerce_app/src/widgets/product_icon.dart';
 import 'package:flutter_ecommerce_app/src/widgets/extentions.dart';
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({required Key key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -22,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(13)),
-          color: Theme.of(context).backgroundColor,
+          color: Theme.of(context).colorScheme.surface,
           boxShadow: AppTheme.shadow),
       child: Icon(
         icon,
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                     model.isSelected = true;
                   });
-                },
+                }, key: UniqueKey(),
               ),
             )
             .toList(),
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                     model.isSelected = true;
                   });
-                },
+                }, key: UniqueKey(),
               ),
             )
             .toList(),
